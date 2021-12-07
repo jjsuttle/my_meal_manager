@@ -8,6 +8,8 @@ class RecipeStepResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :recipe
+
   # Indirect associations
 
 end
