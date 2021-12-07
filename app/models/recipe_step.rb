@@ -1,6 +1,8 @@
 class RecipeStep < ApplicationRecord
   # Direct associations
 
+  belongs_to :recipe
+
   # Indirect associations
 
   # Validations
