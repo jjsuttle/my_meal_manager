@@ -24,7 +24,12 @@ class RecipeStepsController < ApplicationController
     @recipe_step = RecipeStep.new(recipe_step_params)
 
     if @recipe_step.save
-      redirect_to @recipe_step, notice: 'Recipe step was successfully created.'
+      message = 'RecipeStep was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @recipe_step, notice: message
+      end
     else
       render :new
     end

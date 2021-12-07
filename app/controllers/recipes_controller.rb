@@ -8,6 +8,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
+    @recipe_review = RecipeReview.new
+    @recipe_ingredient = RecipeIngredient.new
+    @recipe_step = RecipeStep.new
   end
 
   # GET /recipes/new
