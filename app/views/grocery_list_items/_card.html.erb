@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Grocery List Item #<%= grocery_list_item.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Food</dt>
+      <!-- Display food_id start -->
+      <dd><%= grocery_list_item.food_id %></dd>
+      <!-- Display food_id end -->
+
+      <dt>Purchased status</dt>
+      <!-- Display purchased_status start -->
+      <dd><%= grocery_list_item.purchased_status %></dd>
+      <!-- Display purchased_status end -->
+
+      <dt>Food item</dt>
+      <!-- Display food_item start -->
+      <dd><%= grocery_list_item.food_item %></dd>
+      <!-- Display food_item end -->
+
+      <dt>Note</dt>
+      <!-- Display note start -->
+      <dd><%= grocery_list_item.note %></dd>
+      <!-- Display note end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back grocery_list_item, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link grocery_list_item start -->
+      <div class="col">
+        <%= link_to edit_grocery_list_item_url(grocery_list_item), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link grocery_list_item end -->
+
+      <!-- Delete link grocery_list_item start -->
+      <div class="col">
+        <%= link_to grocery_list_item, method: :delete, data: { confirm: "Do you really want to delete this grocery_list_item?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link grocery_list_item end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(grocery_list_item.updated_at) %> ago
+  </div>
+</div>
