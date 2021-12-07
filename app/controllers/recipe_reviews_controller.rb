@@ -5,7 +5,7 @@ class RecipeReviewsController < ApplicationController
 
   # GET /recipe_reviews
   def index
-    @recipe_reviews = RecipeReview.all
+    @recipe_reviews = current_user.recipe_comments.page(params[:page]).per(10)
   end
 
   # GET /recipe_reviews/1
