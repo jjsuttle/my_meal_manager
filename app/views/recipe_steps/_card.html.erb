@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Recipe Step #<%= recipe_step.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Recipe</dt>
+      <!-- Display recipe_id start -->
+      <dd><%= recipe_step.recipe_id %></dd>
+      <!-- Display recipe_id end -->
+
+      <dt>Step instruction</dt>
+      <!-- Display step_instruction start -->
+      <dd><%= recipe_step.step_instruction %></dd>
+      <!-- Display step_instruction end -->
+
+      <dt>Step duration minutes</dt>
+      <!-- Display step_duration_minutes start -->
+      <dd><%= recipe_step.step_duration_minutes %></dd>
+      <!-- Display step_duration_minutes end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back recipe_step, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link recipe_step start -->
+      <div class="col">
+        <%= link_to edit_recipe_step_url(recipe_step), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link recipe_step end -->
+
+      <!-- Delete link recipe_step start -->
+      <div class="col">
+        <%= link_to recipe_step, method: :delete, data: { confirm: "Do you really want to delete this recipe_step?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link recipe_step end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(recipe_step.updated_at) %> ago
+  </div>
+</div>
