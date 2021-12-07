@@ -4,6 +4,8 @@ RSpec.describe User, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:inventory_of_food_items) }
+
     end
 
     describe "InDirect Associations" do
