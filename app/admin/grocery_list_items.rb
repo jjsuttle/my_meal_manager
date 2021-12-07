@@ -1,5 +1,7 @@
 ActiveAdmin.register GroceryListItem do
 
+ permit_params :food_id, :purchased_status, :food_item, :note
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
