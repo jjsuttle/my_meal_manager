@@ -8,6 +8,8 @@ class RecipeResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :recipe_ingredients
+
   has_many   :recipe_steps
 
   # Indirect associations
