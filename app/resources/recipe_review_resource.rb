@@ -9,6 +9,10 @@ class RecipeReviewResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :commentor,
+             resource: UserResource,
+             foreign_key: :reviewer_id
+
   # Indirect associations
 
 end
