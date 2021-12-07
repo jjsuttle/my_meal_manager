@@ -3,7 +3,8 @@ class GroceryListItemsController < ApplicationController
 
   # GET /grocery_list_items
   def index
-    @grocery_list_items = GroceryListItem.page(params[:page]).per(10)
+    @q = GroceryListItem.ransack(params[:q])
+    @grocery_list_items = @q.result(:distinct => true).page(params[:page]).per(10)
   end
 
   # GET /grocery_list_items/1

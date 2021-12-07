@@ -3,7 +3,8 @@ class RecipeStepsController < ApplicationController
 
   # GET /recipe_steps
   def index
-    @recipe_steps = RecipeStep.page(params[:page]).per(10)
+    @q = RecipeStep.ransack(params[:q])
+    @recipe_steps = @q.result(:distinct => true).includes(:recipe).page(params[:page]).per(10)
   end
 
   # GET /recipe_steps/1
