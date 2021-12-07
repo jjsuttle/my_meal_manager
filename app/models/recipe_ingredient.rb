@@ -1,6 +1,8 @@
 class RecipeIngredient < ApplicationRecord
   # Direct associations
 
+  belongs_to :recipe
+
   belongs_to :food,
              :required => false,
              :class_name => "InventoryOfFoodItem"
