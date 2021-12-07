@@ -9,6 +9,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :inventory_of_food_items
+
   # Indirect associations
 
 end
