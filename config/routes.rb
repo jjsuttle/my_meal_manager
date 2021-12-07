@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "inventory_of_food_items#index"
   resources :recipe_reviews
   resources :grocery_list_items
   resources :recipe_steps
