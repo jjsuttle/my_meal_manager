@@ -3,7 +3,7 @@ class RecipeStepsController < ApplicationController
 
   # GET /recipe_steps
   def index
-    @recipe_steps = RecipeStep.all
+    @recipe_steps = RecipeStep.page(params[:page]).per(10)
   end
 
   # GET /recipe_steps/1

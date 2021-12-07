@@ -3,7 +3,7 @@ class GroceryListItemsController < ApplicationController
 
   # GET /grocery_list_items
   def index
-    @grocery_list_items = GroceryListItem.all
+    @grocery_list_items = GroceryListItem.page(params[:page]).per(10)
   end
 
   # GET /grocery_list_items/1

@@ -5,7 +5,7 @@ class InventoryOfFoodItemsController < ApplicationController
 
   # GET /inventory_of_food_items
   def index
-    @inventory_of_food_items = InventoryOfFoodItem.all
+    @inventory_of_food_items = InventoryOfFoodItem.page(params[:page]).per(10)
   end
 
   # GET /inventory_of_food_items/1
