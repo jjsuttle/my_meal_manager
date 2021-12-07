@@ -1,7 +1,6 @@
 <% was_validated = grocery_list_item.errors.any? %>
 
 <%= form_with(model: grocery_list_item, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for food_id start -->
   <div class="form-group">
     <% food_class = "form-control" %>
     <% food_was_invalid = grocery_list_item.errors.include?(:food) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :food_id %>
-    <!-- Input for food_id start -->
     <%= f.number_field :food_id, class: food_class, placeholder: "Enter food" %>
-    <!-- Input for food_id end -->
     <% if food_was_invalid %>
       <% grocery_list_item.errors.full_messages_for(:food).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for food_id end -->
-  <!-- Label and input for purchased_status start -->
   <div class="form-group">
     <% purchased_status_class = "form-control" %>
     <% purchased_status_was_invalid = grocery_list_item.errors.include?(:purchased_status) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :purchased_status %>
-    <!-- Input for purchased_status start -->
     <%= f.select :purchased_status, options_for_select(GroceryListItem.purchased_statuses.keys), {}, class: "form-control" %>
-    <!-- Input for purchased_status end -->
     <% if purchased_status_was_invalid %>
       <% grocery_list_item.errors.full_messages_for(:purchased_status).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for purchased_status end -->
-  <!-- Label and input for food_item start -->
   <div class="form-group">
     <% food_item_class = "form-control" %>
     <% food_item_was_invalid = grocery_list_item.errors.include?(:food_item) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :food_item %>
-    <!-- Input for food_item start -->
     <%= f.text_field :food_item, class: food_item_class, placeholder: "Enter food item" %>
-    <!-- Input for food_item end -->
     <% if food_item_was_invalid %>
       <% grocery_list_item.errors.full_messages_for(:food_item).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for food_item end -->
-  <!-- Label and input for note start -->
   <div class="form-group">
     <% note_class = "form-control" %>
     <% note_was_invalid = grocery_list_item.errors.include?(:note) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :note %>
-    <!-- Input for note start -->
     <%= f.text_field :note, class: note_class, placeholder: "Enter note" %>
-    <!-- Input for note end -->
     <% if note_was_invalid %>
       <% grocery_list_item.errors.full_messages_for(:note).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for note end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

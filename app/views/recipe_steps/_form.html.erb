@@ -1,7 +1,6 @@
 <% was_validated = recipe_step.errors.any? %>
 
 <%= form_with(model: recipe_step, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for recipe_id start -->
   <div class="form-group">
     <% recipe_class = "form-control" %>
     <% recipe_was_invalid = recipe_step.errors.include?(:recipe) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :recipe_id %>
-    <!-- Input for recipe_id start -->
     <%= f.collection_select :recipe_id, Recipe.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for recipe_id end -->
     <% if recipe_was_invalid %>
       <% recipe_step.errors.full_messages_for(:recipe).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for recipe_id end -->
-  <!-- Label and input for step_instruction start -->
   <div class="form-group">
     <% step_instruction_class = "form-control" %>
     <% step_instruction_was_invalid = recipe_step.errors.include?(:step_instruction) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :step_instruction %>
-    <!-- Input for step_instruction start -->
     <%= f.text_area :step_instruction, class: step_instruction_class, placeholder: "Enter step instruction" %>
-    <!-- Input for step_instruction end -->
     <% if step_instruction_was_invalid %>
       <% recipe_step.errors.full_messages_for(:step_instruction).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for step_instruction end -->
-  <!-- Label and input for step_duration_minutes start -->
   <div class="form-group">
     <% step_duration_minute_class = "form-control" %>
     <% step_duration_minute_was_invalid = recipe_step.errors.include?(:step_duration_minute) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :step_duration_minutes %>
-    <!-- Input for step_duration_minutes start -->
     <%= f.number_field :step_duration_minutes, class: step_duration_minute_class, placeholder: "Enter step duration minute" %>
-    <!-- Input for step_duration_minutes end -->
     <% if step_duration_minute_was_invalid %>
       <% recipe_step.errors.full_messages_for(:step_duration_minute).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for step_duration_minutes end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
