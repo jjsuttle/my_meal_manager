@@ -1,5 +1,7 @@
 ActiveAdmin.register RecipeStep do
 
+ permit_params :recipe_id, :step_instruction, :step_duration_minutes
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
