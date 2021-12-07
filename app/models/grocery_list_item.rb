@@ -1,5 +1,5 @@
 class GroceryListItem < ApplicationRecord
-  enum purchased_status: {"need_to_purchase"=>0, "purchased"=>1} 
+  enum purchased_status: { "need_to_purchase" => 0, "purchased" => 1 }
 
   # Direct associations
 
@@ -12,5 +12,4 @@ class GroceryListItem < ApplicationRecord
   def to_s
     food_id
   end
-
 end

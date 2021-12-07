@@ -16,5 +16,4 @@ class RecipeIngredientResource < ApplicationResource
              resource: InventoryOfFoodItemResource
 
   # Indirect associations
-
 end

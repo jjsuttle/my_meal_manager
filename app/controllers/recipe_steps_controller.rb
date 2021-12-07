@@ -1,15 +1,14 @@
 class RecipeStepsController < ApplicationController
-  before_action :set_recipe_step, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe_step, only: %i[show edit update destroy]
 
   # GET /recipe_steps
   def index
     @q = RecipeStep.ransack(params[:q])
-    @recipe_steps = @q.result(:distinct => true).includes(:recipe).page(params[:page]).per(10)
+    @recipe_steps = @q.result(distinct: true).includes(:recipe).page(params[:page]).per(10)
   end
 
   # GET /recipe_steps/1
-  def show
-  end
+  def show; end
 
   # GET /recipe_steps/new
   def new
@@ -17,17 +16,16 @@ class RecipeStepsController < ApplicationController
   end
 
   # GET /recipe_steps/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /recipe_steps
   def create
     @recipe_step = RecipeStep.new(recipe_step_params)
 
     if @recipe_step.save
-      message = 'RecipeStep was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "RecipeStep was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @recipe_step, notice: message
       end
@@ -39,7 +37,7 @@ class RecipeStepsController < ApplicationController
   # PATCH/PUT /recipe_steps/1
   def update
     if @recipe_step.update(recipe_step_params)
-      redirect_to @recipe_step, notice: 'Recipe step was successfully updated.'
+      redirect_to @recipe_step, notice: "Recipe step was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,23 @@ class RecipeStepsController < ApplicationController
   def destroy
     @recipe_step.destroy
     message = "RecipeStep was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to recipe_steps_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe_step
-      @recipe_step = RecipeStep.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def recipe_step_params
-      params.require(:recipe_step).permit(:recipe_id, :step_instruction, :step_duration_minutes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe_step
+    @recipe_step = RecipeStep.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def recipe_step_params
+    params.require(:recipe_step).permit(:recipe_id, :step_instruction,
+                                        :step_duration_minutes)
+  end
 end

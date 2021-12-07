@@ -4,8 +4,8 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :recipe
 
   belongs_to :food,
-             :required => false,
-             :class_name => "InventoryOfFoodItem"
+             optional: true,
+             class_name: "InventoryOfFoodItem"
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class RecipeIngredient < ApplicationRecord
   def to_s
     recipe.to_s
   end
-
 end

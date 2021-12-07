@@ -16,5 +16,4 @@ class RecipeResource < ApplicationResource
   has_many   :recipe_steps
 
   # Indirect associations
-
 end

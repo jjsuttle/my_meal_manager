@@ -12,5 +12,4 @@ class RecipeStep < ApplicationRecord
   def to_s
     recipe.to_s
   end
-
 end

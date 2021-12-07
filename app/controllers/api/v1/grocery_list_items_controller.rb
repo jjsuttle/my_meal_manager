@@ -13,7 +13,7 @@ class Api::V1::GroceryListItemsController < Api::V1::GraphitiController
     grocery_list_item = GroceryListItemResource.build(params)
 
     if grocery_list_item.save
-      render jsonapi: grocery_list_item, status: 201
+      render jsonapi: grocery_list_item, status: :created
     else
       render jsonapi_errors: grocery_list_item
     end
@@ -33,7 +33,7 @@ class Api::V1::GroceryListItemsController < Api::V1::GraphitiController
     grocery_list_item = GroceryListItemResource.find(params)
 
     if grocery_list_item.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: grocery_list_item
     end

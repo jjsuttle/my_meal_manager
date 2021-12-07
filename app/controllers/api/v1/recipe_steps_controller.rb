@@ -13,7 +13,7 @@ class Api::V1::RecipeStepsController < Api::V1::GraphitiController
     recipe_step = RecipeStepResource.build(params)
 
     if recipe_step.save
-      render jsonapi: recipe_step, status: 201
+      render jsonapi: recipe_step, status: :created
     else
       render jsonapi_errors: recipe_step
     end
@@ -33,7 +33,7 @@ class Api::V1::RecipeStepsController < Api::V1::GraphitiController
     recipe_step = RecipeStepResource.find(params)
 
     if recipe_step.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: recipe_step
     end
