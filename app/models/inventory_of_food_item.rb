@@ -16,6 +16,6 @@ class InventoryOfFoodItem < ApplicationRecord
   # Scopes
 
   def to_s
-    user.to_s
+    food_name
   end
 end

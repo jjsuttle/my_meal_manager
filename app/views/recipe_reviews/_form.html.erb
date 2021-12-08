@@ -68,5 +68,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% recipe_name_class = "form-control" %>
+    <% recipe_name_was_invalid = recipe_review.errors.include?(:recipe_name) %>
+
+    <% if was_validated %>
+      <% if recipe_name_was_invalid %>
+        <% recipe_name_class << " is-invalid" %>
+      <% else %>
+        <% recipe_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recipe_name %>
+    <%= f.text_field :recipe_name, class: recipe_name_class, placeholder: "Enter recipe name" %>
+    <% if recipe_name_was_invalid %>
+      <% recipe_review.errors.full_messages_for(:recipe_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

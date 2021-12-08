@@ -14,6 +14,6 @@ class RecipeReview < ApplicationRecord
   # Scopes
 
   def to_s
-    commentor.to_s
+    recipe_name
   end
 end

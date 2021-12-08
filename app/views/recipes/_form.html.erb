@@ -67,5 +67,27 @@
       <% end %>
     <% end %>
   </div>
+  <div class="form-group">
+    <% instruction_class = "form-control" %>
+    <% instruction_was_invalid = recipe.errors.include?(:instruction) %>
+
+    <% if was_validated %>
+      <% if instruction_was_invalid %>
+        <% instruction_class << " is-invalid" %>
+      <% else %>
+        <% instruction_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, class: instruction_class, placeholder: "Enter instruction" %>
+    <% if instruction_was_invalid %>
+      <% recipe.errors.full_messages_for(:instruction).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

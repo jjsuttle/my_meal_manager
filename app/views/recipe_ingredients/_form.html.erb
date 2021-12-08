@@ -46,21 +46,21 @@
     <% end %>
   </div>
   <div class="form-group">
-    <% food_item_class = "form-control" %>
-    <% food_item_was_invalid = recipe_ingredient.errors.include?(:food_item) %>
+    <% ingredient_name_class = "form-control" %>
+    <% ingredient_name_was_invalid = recipe_ingredient.errors.include?(:ingredient_name) %>
 
     <% if was_validated %>
-      <% if food_item_was_invalid %>
-        <% food_item_class << " is-invalid" %>
+      <% if ingredient_name_was_invalid %>
+        <% ingredient_name_class << " is-invalid" %>
       <% else %>
-        <% food_item_class << " is-valid" %>
+        <% ingredient_name_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :food_item %>
-    <%= f.text_field :food_item, class: food_item_class, placeholder: "Enter food item" %>
-    <% if food_item_was_invalid %>
-      <% recipe_ingredient.errors.full_messages_for(:food_item).each do |message| %>
+    <%= f.label :ingredient_name %>
+    <%= f.text_field :ingredient_name, class: ingredient_name_class, placeholder: "Enter ingredient name" %>
+    <% if ingredient_name_was_invalid %>
+      <% recipe_ingredient.errors.full_messages_for(:ingredient_name).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>
@@ -102,7 +102,7 @@
     <% end %>
 
     <%= f.label :quantity_units %>
-    <%= f.text_field :quantity_units, class: quantity_unit_class, placeholder: "Enter quantity unit" %>
+    <%= f.select :quantity_units, options_for_select(RecipeIngredient.quantity_units.keys), {}, class: "form-control" %>
     <% if quantity_unit_was_invalid %>
       <% recipe_ingredient.errors.full_messages_for(:quantity_unit).each do |message| %>
         <div class="invalid-feedback d-flex">

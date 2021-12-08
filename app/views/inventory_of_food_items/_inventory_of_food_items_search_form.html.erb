@@ -2,13 +2,13 @@
   <p class="lead">Narrow results:</p>
 
   <div class="form-group">
-    <%= f.label :note_cont, "Note contains" %>
-    <%= f.text_field :note_cont, :class => "form-control", :placeholder => "Note contains" %>
+    <%= f.label :food_name_cont, "Food name contains" %>
+    <%= f.text_field :food_name_cont, :class => "form-control", :placeholder => "Food name contains" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :food_item_cont, "Food item contains" %>
-    <%= f.text_field :food_item_cont, :class => "form-control", :placeholder => "Food item contains" %>
+    <%= f.label :note_cont, "Note contains" %>
+    <%= f.text_field :note_cont, :class => "form-control", :placeholder => "Note contains" %>
   </div>
 
   <div class="form-group">
@@ -138,8 +138,48 @@
 
 
   <div class="form-group">
-    <%= f.label :user_email_cont, "User email contains" %>
-    <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+    <%= f.label :created_at, "User Created at" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <div class='input-group date' id='usergteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :user_created_at_gteq, :class => "form-control datetimepicker-input", :placeholder => "User Created at greater than or equal to", :data => {:target => '#usergteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#usergteqcreated_atPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-6'>
+        <div class='input-group date' id='userlteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :user_created_at_lteq, :class => "form-control datetimepicker-input", :placeholder => "User Created at less than or equal to", :data => {:target => '#userlteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#userlteqcreated_atPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(function () {
+          $('#usergteqcreated_atPicker').datetimepicker({
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#userlteqcreated_atPicker').datetimepicker({
+              useCurrent: false,
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#usergteqcreated_atPicker').on("dp.change", function (e) {
+              $('#userlteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+          });
+          $('#userlteqcreated_atPicker').on("dp.change", function (e) {
+              $('#usergteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+          });
+      });
+  </script>
+
+  <div class="form-group">
+    <%= f.label :recipe_ingredients_ingredient_name_cont, "Recipe ingredients ingredient_name contains" %>
+    <%= f.text_field :recipe_ingredients_ingredient_name_cont, :class => "form-control", :placeholder => "Recipe ingredients ingredient_name contains" %>
   </div>
 
 

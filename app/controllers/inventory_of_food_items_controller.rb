@@ -71,6 +71,6 @@ class InventoryOfFoodItemsController < ApplicationController
 
   def inventory_of_food_item_params
     params.require(:inventory_of_food_item).permit(:user_id, :date_purchased,
-                                                   :expiration_date, :days_until_expiration, :purchased_status, :food_item, :note)
+                                                   :expiration_date, :days_until_expiration, :purchased_status, :food_name, :note)
   end
 end

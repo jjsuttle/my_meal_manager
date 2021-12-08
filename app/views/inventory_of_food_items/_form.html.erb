@@ -91,21 +91,21 @@
     <% end %>
   </div>
   <div class="form-group">
-    <% food_item_class = "form-control" %>
-    <% food_item_was_invalid = inventory_of_food_item.errors.include?(:food_item) %>
+    <% food_name_class = "form-control" %>
+    <% food_name_was_invalid = inventory_of_food_item.errors.include?(:food_name) %>
 
     <% if was_validated %>
-      <% if food_item_was_invalid %>
-        <% food_item_class << " is-invalid" %>
+      <% if food_name_was_invalid %>
+        <% food_name_class << " is-invalid" %>
       <% else %>
-        <% food_item_class << " is-valid" %>
+        <% food_name_class << " is-valid" %>
       <% end %>
     <% end %>
 
-    <%= f.label :food_item %>
-    <%= f.text_field :food_item, class: food_item_class, placeholder: "Enter food item" %>
-    <% if food_item_was_invalid %>
-      <% inventory_of_food_item.errors.full_messages_for(:food_item).each do |message| %>
+    <%= f.label :food_name %>
+    <%= f.text_field :food_name, class: food_name_class, placeholder: "Enter food name" %>
+    <% if food_name_was_invalid %>
+      <% inventory_of_food_item.errors.full_messages_for(:food_name).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

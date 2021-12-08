@@ -6,7 +6,7 @@ class CreateInventoryOfFoodItems < ActiveRecord::Migration[6.0]
       t.date :expiration_date
       t.string :days_until_expiration
       t.integer :purchased_status
-      t.string :food_item
+      t.string :food_name
       t.string :note
 
       t.timestamps
