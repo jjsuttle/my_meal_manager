@@ -5,6 +5,7 @@ class CreateRecipeReviews < ActiveRecord::Migration[6.0]
       t.integer :recipe_id
       t.float :rating
       t.text :review
+      t.string :recipe_name
 
       t.timestamps
     end

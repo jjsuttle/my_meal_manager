@@ -4,10 +4,6 @@ Rails.application.routes.draw do
     scope module: "api/v1", as: "api" do
       resources :recipe_reviews
 
-      resources :grocery_list_items
-
-      resources :recipe_steps
-
       resources :recipe_ingredients
 
       resources :recipes
@@ -23,8 +19,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: "inventory_of_food_items#index"
   resources :recipe_reviews
-  resources :grocery_list_items
-  resources :recipe_steps
   resources :recipe_ingredients
   resources :recipes
   resources :inventory_of_food_items

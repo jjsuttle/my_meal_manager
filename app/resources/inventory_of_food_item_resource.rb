@@ -8,7 +8,7 @@ class InventoryOfFoodItemResource < ApplicationResource
   attribute :days_until_expiration, :string
   attribute :purchased_status, :string_enum,
             allow: InventoryOfFoodItem.purchased_statuses.keys
-  attribute :food_item, :string
+  attribute :food_name, :string
   attribute :note, :string
 
   # Direct associations

@@ -3,14 +3,13 @@ class RecipesController < ApplicationController
 
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(distinct: true).includes(:recipe_steps,
-                                                  :recipe_ingredients, :recipe_comments).page(params[:page]).per(10)
+    @recipes = @q.result(distinct: true).includes(:recipe_ingredients,
+                                                  :recipe_comments).page(params[:page]).per(10)
   end
 
   def show
     @recipe_review = RecipeReview.new
     @recipe_ingredient = RecipeIngredient.new
-    @recipe_step = RecipeStep.new
   end
 
   def new
@@ -49,6 +48,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :servings, :cooking_time)
+    params.require(:recipe).permit(:recipe_name, :servings, :cooking_time,
+                                   :instructions)
   end
 end

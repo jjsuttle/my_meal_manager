@@ -5,6 +5,7 @@ class RecipeResource < ApplicationResource
   attribute :recipe_name, :string
   attribute :servings, :integer
   attribute :cooking_time, :integer
+  attribute :instructions, :string
 
   # Direct associations
 
@@ -12,8 +13,6 @@ class RecipeResource < ApplicationResource
              resource: RecipeReviewResource
 
   has_many   :recipe_ingredients
-
-  has_many   :recipe_steps
 
   # Indirect associations
 end

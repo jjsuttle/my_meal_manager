@@ -9,9 +9,9 @@
   <%= f.hidden_field :food_id, value: @inventory_of_food_item.id %>
 
   <div class="form-group">
-    <%= f.label :food_item %>
+    <%= f.label :ingredient_name %>
 
-    <%= f.text_field :food_item, class: "form-control" %>
+    <%= f.text_field :ingredient_name, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -23,7 +23,7 @@
   <div class="form-group">
     <%= f.label :quantity_units %>
 
-    <%= f.text_field :quantity_units, class: "form-control" %>
+    <%= f.select :quantity_units, options_for_select(RecipeIngredient.quantity_units.keys), {}, class: "form-control" %>
   </div>
 
   <%= f.submit "Create recipe ingredient", class: "btn btn-block btn-outline-secondary" %>

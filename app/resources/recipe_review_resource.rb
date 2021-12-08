@@ -6,6 +6,7 @@ class RecipeReviewResource < ApplicationResource
   attribute :recipe_id, :integer
   attribute :rating, :float
   attribute :review, :string
+  attribute :recipe_name, :string
 
   # Direct associations
 

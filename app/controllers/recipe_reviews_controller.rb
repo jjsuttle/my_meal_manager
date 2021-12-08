@@ -68,6 +68,6 @@ class RecipeReviewsController < ApplicationController
 
   def recipe_review_params
     params.require(:recipe_review).permit(:reviewer_id, :recipe_id, :rating,
-                                          :review)
+                                          :review, :recipe_name)
   end
 end
